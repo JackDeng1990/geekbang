@@ -1,0 +1,43 @@
+public class Hello {
+  public Hello();
+    Code:
+       0: aload_0 //将本地变量表中第0个位置的变量加载到栈上 //a前缀标引用类型
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V  // 调用当前类的父类（Object）的初始化方法， #1 是常量池里的常量
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: bipush        10                           //将10压入栈中
+       2: istore_1                                   //将int类型常量放到本地变量表1位置
+       3: iconst_2                                   //讲int类型常量压入栈中
+       4: istore_2                                   //将int类型常量放到本地变量表2位置
+       5: iload_1                                    //将本地变量表第1个位置的int变量加载到栈上
+       6: iload_2                                    //将本地变量表第2个位置的int变量加载到栈上
+       7: iadd                                       //int加法
+       8: istore_3                                   //将int类型常量放到本地变量表3位置
+       9: iload_1                                    //将本地变量表第1个位置的int变量加载到栈上
+      10: iload_2                                    //将本地变量表第2个位置的int变量加载到栈上
+      11: isub                                       //int减法
+      12: istore        4                            //将int类型常量放到本地变量表4位置
+      14: iload_1                                    //将本地变量表第1个位置的int变量加载到栈上
+      15: iload_2                                    //将本地变量表第2个位置的int变量加载到栈上
+      16: imul                                       //int乘法
+      17: istore        5                            //将int类型常量放到本地变量表5位置
+      19: iload_1                                    //将本地变量表第1个位置的int变量加载到栈上
+      20: iload_2                                    //将本地变量表第2个位置的int变量加载到栈上
+      21: idiv                                       //int除法
+      22: istore        6                            //将int类型常量放到本地变量表6位置
+      24: iinc          3, 1                         //int类型自增，3位置+1 
+      27: iconst_0                                   //将0压入栈中
+      28: istore        7                            //int类型常量放到本地变量表7位置
+      30: iload         7                            //将本地变量表第7个位置的int变量加载到栈上
+      32: iconst_4                                   //将4压入栈中
+      33: if_icmpge     47                           //4与7位置进行比较，若4大于等于7位置的变量，则继续
+      36: iload_3                                    //将本地变量表第3个位置的int变量加载到栈上
+      37: iload         7                            //将本地变量表第7个位置的int变量加载到栈上
+      39: iadd                                       //加操作
+      40: istore_3                                   //将int类型常量放到本地变量表3位置
+      41: iinc          7, 1                         //int类型自增，7位置自增+1
+      44: goto          30                           //回到30
+      47: return
+}
