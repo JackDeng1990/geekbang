@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 基于XML的Bean装配 -->
+    <bean class="spring.User" id="user">
+        <constructor-arg ref="myArticle"/>
+    </bean>
+
+    <bean class="spring.MyArticle" id="myArticle"></bean>
+
+    <!-- 隐式配置  -->
+    <context:component-scan base-package="spring"/>
+
+    <!--    学校类相关配置-->
+    <bean id="student1" class="school.Student">
+        <property name="id" value="1"/>
+        <property name="name" value="1"/>
+    </bean>
+    <bean id="student2" class="school.Student">
+        <property name="id" value="2"/>
+        <property name="name" value="2"/>
+    </bean>
+
+    <bean id="class" class="school.MyClass">
+        <property name="students">
+            <list>
+                <ref bean="student1"/>
+                <ref bean="student2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="school" class="school.School">
+        <property name="classes">
+            <list>
+                <ref bean="class"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
