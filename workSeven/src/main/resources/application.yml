@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://8.140.45.11:3306/geektime
+    username: root
+    password: dengchao20
+    driver-class-name: com.mysql.cj.jdbc.Driver
