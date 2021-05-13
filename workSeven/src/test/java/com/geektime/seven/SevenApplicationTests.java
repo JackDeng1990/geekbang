@@ -33,7 +33,7 @@ class SevenApplicationTests {
             Long startTime = System.currentTimeMillis();
             Random rand = new Random();
             int a, b, c, d;
-            for (int i = 1; i <= 1000000; i++) {
+            for (int i = 1; i <= 10; i++) {
                 a = rand.nextInt(10);
                 b = rand.nextInt(10);
                 c = rand.nextInt(10);
