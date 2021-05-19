@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/sharding_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#  shardingsphere:
+#    masterslave:
+#      load-balance-algorithm-type: round_robin
+#      name: ms
+#      master-data-source-name: master
+#      slave-data-source-names: slave1
+#    props:
+#      sql:
+#        show: true
