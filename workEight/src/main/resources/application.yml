@@ -5,6 +5,23 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+
+#  jta:
+#    atomikos:
+#      datasource:
+#        uniqueResourceName: dataSource
+#        xaDataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+#        xaProperties:
+#          url: jdbc:mysql://127.0.0.1:3307/sharding_db
+#          user: root
+#          password: root
+#        minPoolSize: 20
+#        maxPoolSize: 50
+#        borrowConnectionTimeout: 30
+#        maintenanceInterval: 60
+#        maxIdleTime: 60
+#        maxLifetime: 60
+#        loginTimeout: 60
 #  shardingsphere:
 #    masterslave:
 #      load-balance-algorithm-type: round_robin

@@ -50,9 +50,16 @@ public class OrderController {
         return order;
     }
 
+    @RequestMapping("/delete")
     public int delete(){
         Integer orderId = (int)(Math.random() * 100);
         orderService.delete(orderId);
+        return 1;
+    }
+
+    @RequestMapping("/testTransactional")
+    public int testTransactional(){
+        orderService.testTransactional();
         return 1;
     }
 }
