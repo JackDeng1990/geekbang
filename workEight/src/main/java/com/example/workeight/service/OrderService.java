@@ -39,4 +39,9 @@ public interface OrderService {
      * @param orderId
      */
     void delete(Integer orderId);
+
+    /**
+     * 分布式事务
+     */
+    void testTransactional();
 }
