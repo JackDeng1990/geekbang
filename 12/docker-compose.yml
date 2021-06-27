@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  redis1:
+    image: redis:latest
+    volumes:
+      - redis-data1:/var/lib/redis
+    ports:
+      - 63790:6379
+  redis2:
+    image: redis:latest
+    volumes:
+      - redis-data2:/var/lib/redis
+    ports:
+      - 63791:6379
+  redis3:
+    image: redis:latest
+    volumes:
+      - redis-data3:/var/lib/redis
+    ports:
+      - 63792:6379
+volumes:
+  redis-data1:
+    driver: local
+  redis-data2:
+    driver: local
+  redis-data3:
+    driver: local
+
