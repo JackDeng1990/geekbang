@@ -1,0 +1,86 @@
+version: '3.8'
+services:
+  kafka1:
+    image: wurstmeister/kafka:2.13-2.7.0
+    ports:
+      - 19094:9094
+    hostname: kafka1
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+      - zookeeper3
+    environment:
+      KAFKA_BROKER_ID: 1
+      HOSTNAME_COMMAND: "echo '10.0.0.33'"
+      PORT_COMMAND: "echo '19094'"
+      KAFKA_ZOOKEEPER_CONNECT: zksvr1:2181,zksvr2:2181,zksvr3:2181
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://_{HOSTNAME_COMMAND}:_{PORT_COMMAND}
+      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+
+  kafka2:
+    image: wurstmeister/kafka:2.13-2.7.0
+    ports:
+      - 29094:9094
+    hostname: kafka2
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+      - zookeeper3
+    environment:
+      KAFKA_BROKER_ID: 2
+      HOSTNAME_COMMAND: "echo '10.0.0.33'"
+      PORT_COMMAND: "echo '29094'"
+      KAFKA_ZOOKEEPER_CONNECT: zksvr1:2181,zksvr2:2181,zksvr3:2181
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://_{HOSTNAME_COMMAND}:_{PORT_COMMAND}
+      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+
+  kafka3:
+    image: wurstmeister/kafka:2.13-2.7.0
+    ports:
+      - 39094:9094
+    hostname: kafka3
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+      - zookeeper3
+    environment:
+      KAFKA_BROKER_ID: 3
+      HOSTNAME_COMMAND: "echo '10.0.0.33'"
+      PORT_COMMAND: "echo '39094'"
+      KAFKA_ZOOKEEPER_CONNECT: zksvr1:2181,zksvr2:2181,zksvr3:2181
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://_{HOSTNAME_COMMAND}:_{PORT_COMMAND}
+      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+
+  zookeeper1:
+    image: zookeeper:3.6.2
+    hostname: zksvr1
+    ports:
+      - 21810:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181 server.2=zksvr2:2888:3888;2181 server.3=zksvr3:2888:3888;2181
+
+  zookeeper2:
+    image: zookeeper:3.6.2
+    hostname: zksvr2
+    ports:
+      - 21811:2181
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zksvr1:2888:3888;2181 server.2=0.0.0.0:2888:3888;2181 server.3=zksvr3:2888:3888;2181
+
+  zookeeper3:
+    image: zookeeper:3.6.2
+    hostname: zksvr3
+    ports:
+      - 21812:2181
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zksvr1:2888:3888;2181 server.2=zksvr2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
+
